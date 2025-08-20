@@ -34,3 +34,20 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+Please find today's work updates below :
+Date- 19–08-2025
+Task name ::Next js leaning
+ 
+Completed Task::
+-Understand diffrent between react and next js
+-Benefits of nect js compare to react
+-Understand project dtructure
+-Setup project in next js
+-Understand folder based routing , layout and group routing
+-Understand server side rendering and client side rendering
+-Created signup form.
+
+On Going Task::
+-create login and signup form and api 
+ 
