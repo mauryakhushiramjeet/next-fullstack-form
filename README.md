@@ -36,18 +36,18 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
 Please find today's work updates below :
-Date- 19–08-2025
+Date- 20–08-2025
 Task name ::Next js leaning
  
 Completed Task::
--Understand diffrent between react and next js
--Benefits of nect js compare to react
--Understand project dtructure
--Setup project in next js
--Understand folder based routing , layout and group routing
--Understand server side rendering and client side rendering
--Created signup form.
+-Uderstand file naming convetion of frotend backend
+-Created  frotend and backend side folder structure
+-Creted  api for login , logout, signup 
+-Connect database with server 
+-fetch api
+-set Token for authentication of user
+-Understand static site generation and caching 
 
-On Going Task::
--create login and signup form and api 
+OnGoing task::
+-learning next js
  
