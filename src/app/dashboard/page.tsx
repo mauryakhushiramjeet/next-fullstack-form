@@ -1,20 +1,43 @@
 "use client";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
+import toast from "react-hot-toast";
 
- function Dashborad() {
-    const router = useRouter();
+function Dashborad() {
+  const router = useRouter();
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post("api/auth/logout");
+      const response = await axios.get("api/auth/logout");
       console.log(response.data);
-      router.push("/login")
+      router.push("/login");
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.error);
+      }
     } catch (error) {
       console.log(error);
     }
   };
+  const fetchUserDetails = async () => {
+    try {
+      // tokenAccess
+      const response = await axios.get("/api/auth/tokenAccess");
+      console.log(response.data);
+      if (response.data.success) {
+        toast.success(response.data.message);
+      } else {
+        toast.error(response.data.error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchUserDetails();
+  }, []);
   return (
     <div>
       <button
@@ -25,6 +48,5 @@ import React from "react";
       </button>
     </div>
   );
-};
-export default Dashborad
-
+}
+export default Dashborad;

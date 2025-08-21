@@ -1,4 +1,4 @@
-import { createToken } from "@/app/middleware/createToken";
+import { createToken } from "@/createToken";
 import { databaseConection } from "@/dbConfig/dbConfig";
 import User from "@/models/User";
 import bcrypt from "bcrypt";
@@ -9,15 +9,14 @@ export async function POST(req: NextRequest) {
   try {
     await databaseConection();
     if (!email || !password) {
-      return NextResponse.json(
-        JSON.stringify({ success: false, error: "Please fill all the field" })
-      );
+      return NextResponse.json({
+        success: false,
+        error: "Please fill all the field",
+      });
     }
     const user = await User.findOne({ email });
     if (!user) {
-      return NextResponse.json(
-        JSON.stringify({ success: false, error: "User does't exist!" })
-      );
+      return NextResponse.json({ success: false, error: "User does't exist!" });
     }
     const validatePassword = await bcrypt.compare(password, user.password);
     if (!validatePassword) {
@@ -26,7 +25,8 @@ export async function POST(req: NextRequest) {
         error: "Password does't match",
       });
     }
-    const token = createToken(user._id);
+    const id: string = user._id;
+    const token = createToken(id);
     const response = NextResponse.json({
       success: true,
       message: "User login successfully",
@@ -43,6 +43,10 @@ export async function POST(req: NextRequest) {
     });
     return response;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    return NextResponse.json(
+      { success: false, error: "Something went wrong" },
+      { status: 500 }
+    );
   }
 }

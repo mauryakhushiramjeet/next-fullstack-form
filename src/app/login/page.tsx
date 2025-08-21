@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { signupType } from "@/types";
+import { LoginType } from "@/types";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 function LoginPage() {
-  const [userDetails, setUserDeatils] = useState<signupType>({
+  const [userDetails, setUserDeatils] = useState<LoginType>({
     email: "",
     password: "",
   });
@@ -21,11 +22,14 @@ function LoginPage() {
     try {
       const res = await axios.post("/api/auth/login", userDetails);
       if (res.data.success) {
+        toast.success(res.data.message);
         router.push("/dashboard");
         setUserDeatils({
           email: "",
           password: "",
         });
+      } else {
+        toast.error(res.data.error);
       }
       console.log(res.data);
     } catch (error) {

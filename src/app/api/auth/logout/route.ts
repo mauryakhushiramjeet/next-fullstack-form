@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export async function POST() {
+export async function GET() {
   try {
     const response = NextResponse.json({
       success: true,
@@ -10,6 +10,6 @@ export async function POST() {
     return response;
   } catch (error) {
     console.log(error);
-    return NextResponse.json({ success: false, message: "error in logout" });
+    return NextResponse.json({ success: false, error: error });
   }
 }
